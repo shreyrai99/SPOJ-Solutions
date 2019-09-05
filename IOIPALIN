@@ -1,0 +1,48 @@
+//Code By Shrey Rai
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+ 
+    ll n,i,j;
+    cin>>n;
+    string s1,s2;
+    cin>>s1;
+    s2=s1;
+    reverse(s2.begin(),s2.end());
+    ll dp[n+1][n+1];
+    for(i=0;i<=n;i++)
+    {
+        for(j=0;j<=n;j++)
+        {
+            dp[i][j]=0;
+        }
+    }
+    char p[n+1];
+    char q[n+1];
+    for(i=1;i<=n;i++)
+    {
+        p[i]=s1[i-1];
+        q[i]=s2[i-1];
+    }
+    for(i=0;i<=n;i++)
+    {
+        for(j=0;j<=n;j++)
+        {
+            if(i==0 || j==0)
+                dp[i][j]=0;
+            else if(p[i]!=q[j])
+                dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+            else
+                dp[i][j]=1+dp[i-1][j-1];
+        }
+    }
+    cout<<(n-dp[n][n]);
+ 
+ 
+    return 0;
+}
