@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+ 
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    ll t,m,n,i,f;
+    cin>>t;
+    ll a,b;
+    while(t--)
+    {
+        cin>>n;
+        f=0;
+        pair<ll,ll>p[n];
+        for(i=0;i<n;i++)
+        {
+            cin>>a>>b;
+            p[i]=make_pair(b,a);
+        }
+        int flag=-4;
+        sort(p,p+n);
+        for(i=0;i<n;i++)
+        {
+            if(p[i].second>=flag)
+                {
+                    f++;
+                    flag=p[i].first;
+                }
+        }
+        cout<<f<<"\n";
+    }
+ 
+ 
+    return 0;
+}
