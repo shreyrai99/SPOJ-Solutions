@@ -1,0 +1,53 @@
+//Code By Shrey Rai
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1000000007
+
+ 
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    ll t,n,c,i,j;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n>>c;
+        ll a[n];
+        for(i=0;i<n;i++)
+            cin>>a[i];
+        sort(a,a+n);
+        ll l=0;
+        ll f=0;
+        ll ans=INT_MIN;
+        ll h=a[n-1];
+        ll mid;
+        while(l<=h)
+        {
+            mid=(l+h)/2;
+            f=1;
+            ll p=a[0];
+            for(i=1;i<n;i++)
+            {
+                if(a[i]-p>=mid)
+                {
+                    f++;
+                    p=a[i];
+                }
+            }
+            if(f>=c)
+            {
+                ans=max(ans,mid);
+                l=mid+1;
+            }
+            else
+                h=mid-1;
+ 
+        }
+        cout<<ans<<"\n";
+    }
+ 
+    return 0;
+}
